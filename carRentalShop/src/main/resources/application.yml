@@ -1,0 +1,11 @@
+spring:
+    kafka:
+        producer:
+            bootstrap-servers: localhost:9092
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+topics:
+    rent-car: topic_rent_car_kafka
+    return-car: topic_return_car_kafka
+    send-car-for-maintenance: topic_send_car_for_maintenance_kafka
