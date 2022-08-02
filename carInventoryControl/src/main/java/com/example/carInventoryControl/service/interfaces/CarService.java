@@ -1,11 +1,19 @@
 package com.example.carInventoryControl.service.interfaces;
 
+import java.util.List;
+
+import com.example.carInventoryControl.model.Car;
+
 public interface CarService {
 
-    void rentCar(Long carId);
+    Car createNewCar();
 
-    void devolutionCar(Long carId);
+    List<Car> listAll();
 
-    void sendForMaintenance(Long carId);
+    void rentCar(String carId);
+
+    void devolutionCar(String carId);
+
+    void sendForMaintenance(String carId);
 
 }

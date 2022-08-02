@@ -4,31 +4,31 @@ import java.time.LocalDateTime;
 
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.carInventoryControl.model.states.StateCar;
+import com.example.carInventoryControl.model.states.AbstractState;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Document
 public class Car {
 
     @Id
     private String id;
 
-    @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
     private LocalDateTime updateAt;
 
     @OneToMany
-    private StateCar stateCar;
+    private AbstractState state;
 
 }
