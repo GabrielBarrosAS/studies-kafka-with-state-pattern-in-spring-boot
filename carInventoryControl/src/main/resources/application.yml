@@ -6,7 +6,15 @@ spring:
             auto-offset-reset: earliest
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-
+    data:
+        mongodb:
+            authentication-database: admin
+            username: root
+            password: root
+            database: car_inventory
+            port: 27017
+            host: localhost
+            
 topics:
     rent-car: topic_rent_car_kafka
     return-car: topic_return_car_kafka
