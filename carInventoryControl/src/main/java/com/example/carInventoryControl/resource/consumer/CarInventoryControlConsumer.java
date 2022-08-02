@@ -1,4 +1,4 @@
-package com.example.carInventoryControl.consumer;
+package com.example.carInventoryControl.resource.consumer;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -16,21 +16,21 @@ public class CarInventoryControlConsumer {
     private final CarService carService;
 
     @KafkaListener(topics = "${topics.rent-car}", groupId = "${spring.kafka.consumer.group-id}")
-    public void rentCar(Long carId) {
+    public void rentCar(String carId) {
         log.info("Solicitação recebida no tópico: rent-car");
         carService.rentCar(carId);
 
     }
 
     @KafkaListener(topics = "${topics.return-car}", groupId = "${spring.kafka.consumer.group-id}")
-    public void returnCar(Long carId) {
+    public void returnCar(String carId) {
         log.info("Solicitação recebida no tópico: return-car");
-        carService.rentCar(carId);
+        carService.devolutionCar(carId);
 
     }
 
     @KafkaListener(topics = "${topics.send-car-for-maintenance}", groupId = "${spring.kafka.consumer.group-id}")
-    public void sendCarForMaintenance(Long carId) {
+    public void sendCarForMaintenance(String carId) {
         log.info("Solicitação recebida no tópico: send-car-for-maintenance");
         carService.sendForMaintenance(carId);
 
