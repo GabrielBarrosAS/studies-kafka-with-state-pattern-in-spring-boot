@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Document
 @Data
-public class AbstractState {
+public abstract class AbstractState {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,5 +19,11 @@ public class AbstractState {
 
     @Indexed(unique = true)
     private String _class;
+
+    public abstract AbstractState rentCar();
+
+    public abstract AbstractState devolutionCar();
+
+    public abstract AbstractState sendForMaintenance();
 
 }

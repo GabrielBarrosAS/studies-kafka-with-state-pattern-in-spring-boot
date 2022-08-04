@@ -1,29 +1,35 @@
 package com.example.carInventoryControl.model.states.impl;
 
+import com.example.carInventoryControl.exceptions.BadRequestException;
 import com.example.carInventoryControl.model.states.AbstractState;
-import com.example.carInventoryControl.model.states.StateMethods;
 
 import lombok.Builder;
+import lombok.extern.log4j.Log4j2;
 
 @Builder
-public class CarAvailable extends AbstractState implements StateMethods {
+@Log4j2
+public class CarAvailable extends AbstractState {
 
     @Override
-    public StateMethods rentCar() {
-        // TODO Auto-generated method stub
-        return null;
+    public AbstractState rentCar() {
+
+        log.info("\n\nALUGANDO CARRO QUE ESTA DISPONÍVEL\n\n");
+
+        return CarNotAvailable.builder().build();
     }
 
     @Override
-    public StateMethods devolutionCar() {
-        // TODO Auto-generated method stub
-        return null;
+    public AbstractState devolutionCar() {
+
+        throw new BadRequestException("\n\nNÃO É POSSÍVEL DEVOLVER UM CARRO QUE NÃO ESTÁ ALUGADO\n\n");
     }
 
     @Override
-    public StateMethods sendForMaintenance() {
-        // TODO Auto-generated method stub
-        return null;
+    public AbstractState sendForMaintenance() {
+
+        log.info("\n\nENVIANDO PARA MANUTENÇÃO UM CARRO QUE ESTA DISPONÍVEL\n\n");
+
+        return CarInMaintenance.builder().build();
     }
 
 }
