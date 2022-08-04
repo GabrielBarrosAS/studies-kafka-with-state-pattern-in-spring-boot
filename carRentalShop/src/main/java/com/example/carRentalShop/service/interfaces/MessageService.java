@@ -2,10 +2,10 @@ package com.example.carRentalShop.service.interfaces;
 
 public interface MessageService {
 
-    void rentCar(Long carId);
+    void rentCar(String carId);
 
-    void returnCar(Long carId);
-    
-    void sendCarForMaintenance(Long carId);
-    
+    void returnCar(String carId);
+
+    void sendCarForMaintenance(String carId);
+
 }

@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-public class KafkaMessageService implements MessageService{
+public class KafkaMessageService implements MessageService {
 
     @Value("${topics.rent-car}")
     private String topicRentCar;
@@ -26,27 +26,27 @@ public class KafkaMessageService implements MessageService{
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Override
-    public void rentCar(Long carId) {
-        
+    public void rentCar(String carId) {
+
         log.info("(RentCar) Enviando solicitação");
-        kafkaTemplate.send(topicRentCar,carId.toString());
-        
+        kafkaTemplate.send(topicRentCar, carId.toString());
+
     }
-    
+
     @Override
-    public void returnCar(Long carId) {
+    public void returnCar(String carId) {
 
         log.info("(ReturnCar) Enviando solicitação");
-        kafkaTemplate.send(topicReturnCar,carId.toString());
-         
+        kafkaTemplate.send(topicReturnCar, carId.toString());
+
     }
-    
+
     @Override
-    public void sendCarForMaintenance(Long carId) {
+    public void sendCarForMaintenance(String carId) {
 
         log.info("(SendCarForMaintenance) Enviando solicitação");
-        kafkaTemplate.send(topicSendCarForMaintenanceCar,carId.toString());
-        
+        kafkaTemplate.send(topicSendCarForMaintenanceCar, carId.toString());
+
     }
-    
+
 }
