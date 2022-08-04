@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.carInventoryControl.exceptions.NotFoundException;
 import com.example.carInventoryControl.model.Car;
+import com.example.carInventoryControl.model.states.impl.CarAvailable;
 import com.example.carInventoryControl.repository.CarRepository;
 import com.example.carInventoryControl.service.interfaces.AbstractStateService;
 import com.example.carInventoryControl.service.interfaces.CarService;
@@ -34,18 +35,36 @@ public class CarServiceMongoImpl implements CarService {
 
     @Override
     public void rentCar(String carId) {
+
         log.info("Function rent car");
+
+        Car car = findCarByIdOrThrowNotFoundException(carId);
+
+        car.setState(abstractStateService.getStateForClass(
+                car.getState().rentCar().getClass().getTypeName()));
+
     }
 
     @Override
     public void devolutionCar(String carId) {
 
         log.info("Function devolution car");
+
+        Car car = findCarByIdOrThrowNotFoundException(carId);
+
+        car.setState(abstractStateService.getStateForClass(
+                car.getState().devolutionCar().getClass().getTypeName()));
     }
 
     @Override
     public void sendForMaintenance(String carId) {
+
         log.info("Function maintenance car");
+
+        Car car = findCarByIdOrThrowNotFoundException(carId);
+
+        car.setState(abstractStateService.getStateForClass(
+                car.getState().sendForMaintenance().getClass().getTypeName()));
 
     }
 
@@ -56,7 +75,7 @@ public class CarServiceMongoImpl implements CarService {
                 Car.builder()
                         .createdAt(LocalDateTime.now())
                         .updateAt(LocalDateTime.now())
-                        .state(abstractStateService.getCarAvaliableState())
+                        .state(abstractStateService.getStateForClass(CarAvailable.class.getTypeName()))
                         .build());
     }
 

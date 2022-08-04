@@ -8,10 +8,14 @@ public interface AbstractStateService {
 
     List<AbstractState> findAll();
 
-    AbstractState getCarAvaliableState();
+    /*
+     * AbstractState getCarAvaliableState();
+     * 
+     * AbstractState getCarNotAvaliableState();
+     * 
+     * AbstractState getCarInMaintenance();
+     */
 
-    AbstractState getCarNotAvaliableState();
-
-    AbstractState getCarInMaintenance();
+    AbstractState getStateForClass(String _class);
 
 }
