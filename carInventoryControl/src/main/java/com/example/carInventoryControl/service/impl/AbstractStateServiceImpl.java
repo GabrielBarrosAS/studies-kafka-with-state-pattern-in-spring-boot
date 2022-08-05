@@ -22,30 +22,6 @@ public class AbstractStateServiceImpl implements AbstractStateService {
         return abstractStateRepository.findAll();
     }
 
-    /*
-     * @Override
-     * public AbstractState getCarAvaliableState() {
-     * 
-     * AbstractState a =
-     * abstractStateRepository.findBy_class(CarAvailable.class.getTypeName());
-     * return a;
-     * }
-     * 
-     * @Override
-     * public AbstractState getCarNotAvaliableState() {
-     * 
-     * return
-     * abstractStateRepository.findBy_class(CarNotAvailable.class.getTypeName());
-     * }
-     * 
-     * @Override
-     * public AbstractState getCarInMaintenance() {
-     * 
-     * return
-     * abstractStateRepository.findBy_class(CarInMaintenance.class.getTypeName());
-     * }
-     */
-
     @Override
     public AbstractState getStateForClass(String _class) {
 
