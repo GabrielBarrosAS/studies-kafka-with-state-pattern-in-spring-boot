@@ -26,10 +26,8 @@ public class CarServiceMongoImpl implements CarService {
 
     public Car findCarByIdOrThrowNotFoundException(String carId) {
 
-        Car car = carRepository.findById(carId).orElseThrow(
+        return carRepository.findById(carId).orElseThrow(
                 () -> new NotFoundException("Car not found"));
-
-        return car;
 
     }
 
@@ -43,6 +41,7 @@ public class CarServiceMongoImpl implements CarService {
         car.setState(abstractStateService.getStateForClass(
                 car.getState().rentCar().getClass().getTypeName()));
 
+        carRepository.save(car);
     }
 
     @Override
@@ -54,6 +53,8 @@ public class CarServiceMongoImpl implements CarService {
 
         car.setState(abstractStateService.getStateForClass(
                 car.getState().devolutionCar().getClass().getTypeName()));
+
+        carRepository.save(car);
     }
 
     @Override
@@ -66,6 +67,7 @@ public class CarServiceMongoImpl implements CarService {
         car.setState(abstractStateService.getStateForClass(
                 car.getState().sendForMaintenance().getClass().getTypeName()));
 
+        carRepository.save(car);
     }
 
     @Override

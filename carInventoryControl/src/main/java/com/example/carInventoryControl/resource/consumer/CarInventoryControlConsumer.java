@@ -15,21 +15,21 @@ public class CarInventoryControlConsumer {
 
     private final CarService carService;
 
-    @KafkaListener(topics = "${topics.rent-car}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${topics.rent-car}", groupId = "${spring.kafka.consumer.group-id}", errorHandler = "carInventoryControlErrorHandler")
     public void rentCar(String carId) {
         log.info("Solicitação recebida no tópico: rent-car");
         carService.rentCar(carId);
 
     }
 
-    @KafkaListener(topics = "${topics.return-car}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${topics.return-car}", groupId = "${spring.kafka.consumer.group-id}", errorHandler = "carInventoryControlErrorHandler")
     public void returnCar(String carId) {
         log.info("Solicitação recebida no tópico: return-car");
         carService.devolutionCar(carId);
 
     }
 
-    @KafkaListener(topics = "${topics.send-car-for-maintenance}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${topics.send-car-for-maintenance}", groupId = "${spring.kafka.consumer.group-id}", errorHandler = "carInventoryControlErrorHandler")
     public void sendCarForMaintenance(String carId) {
         log.info("Solicitação recebida no tópico: send-car-for-maintenance");
         carService.sendForMaintenance(carId);

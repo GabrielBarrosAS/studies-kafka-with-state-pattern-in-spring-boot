@@ -21,7 +21,9 @@ public class CarAvailable extends AbstractState {
     @Override
     public AbstractState devolutionCar() {
 
-        throw new BadRequestException("\n\nNÃO É POSSÍVEL DEVOLVER UM CARRO QUE NÃO ESTÁ ALUGADO\n\n");
+        log.info("\n\nNÃO É POSSÍVEL DEVOLVER UM CARRO QUE NÃO ESTÁ ALUGADO\n\n");
+
+        return CarAvailable.builder().build();
     }
 
     @Override

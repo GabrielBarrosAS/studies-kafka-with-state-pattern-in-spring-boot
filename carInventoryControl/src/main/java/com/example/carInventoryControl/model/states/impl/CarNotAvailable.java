@@ -13,7 +13,9 @@ public class CarNotAvailable extends AbstractState {
     @Override
     public AbstractState rentCar() {
 
-        throw new BadRequestException("\n\nNÃO É POSSÍVEL ALUGAR QUE JÁ ESTÁ ALUGADO\n\n");
+        log.info("\n\nNÃO É POSSÍVEL ALUGAR QUE JÁ ESTÁ ALUGADO\n\n");
+
+        return CarNotAvailable.builder().build();
     }
 
     @Override
@@ -27,7 +29,9 @@ public class CarNotAvailable extends AbstractState {
     @Override
     public AbstractState sendForMaintenance() {
 
-        throw new BadRequestException("\n\nNÃO É POSSÍVEL ENVIAR PARA MANUTENÇÃO UM CARRO QUE ESTÁ ALUGADO\n\n");
+        log.info("\n\nNÃO É POSSÍVEL ENVIAR PARA MANUTENÇÃO UM CARRO QUE ESTÁ ALUGADO\n\n");
+
+        return CarNotAvailable.builder().build();
     }
 
 }

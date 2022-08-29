@@ -19,21 +19,17 @@ public class persistStates implements CommandLineRunner {
     private final AbstractStateRepository abstractStateRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         CarAvailable carAvailable = CarAvailable.builder().build();
         CarInMaintenance carInMaintenance = CarInMaintenance.builder().build();
         CarNotAvailable carNotAvailable = CarNotAvailable.builder().build();
 
-        abstractStateRepository.save(carAvailable);
-        abstractStateRepository.save(carInMaintenance);
-        abstractStateRepository.save(carNotAvailable);
+        // abstractStateRepository.save(carAvailable);
+        // abstractStateRepository.save(carInMaintenance);
+        // abstractStateRepository.save(carNotAvailable);
 
-        abstractStateRepository.findAll().stream().forEach(stateCar -> {
-
-            log.info(stateCar.getClass());
-
-        });
+        abstractStateRepository.findAll().forEach(stateCar -> log.info(stateCar.getClass()));
 
     }
 

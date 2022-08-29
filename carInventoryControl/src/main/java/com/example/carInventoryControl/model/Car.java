@@ -2,8 +2,6 @@ package com.example.carInventoryControl.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.OneToMany;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,7 +26,6 @@ public class Car {
 
     private LocalDateTime updateAt;
 
-    @OneToMany
     private AbstractState state;
 
 }

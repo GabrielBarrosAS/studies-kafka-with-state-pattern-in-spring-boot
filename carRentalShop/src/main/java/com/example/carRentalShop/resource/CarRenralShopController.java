@@ -33,7 +33,7 @@ public class CarRenralShopController {
     public ResponseEntity<String> returnCar(@PathVariable String carId) {
 
         log.info("Solicitação de devolução recebida. Inicicando processo...");
-        messageService.rentCar(carId);
+        messageService.returnCar(carId);
         return new ResponseEntity<>("Solicitação devolução feita com sucesso", HttpStatus.OK);
 
     }
