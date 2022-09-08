@@ -21,7 +21,7 @@ public class CarNotAvailable extends AbstractState {
     @Override
     public AbstractState devolutionCar() {
 
-        log.info("CARRO QUE ESTAVA ALUGADO AGORA ESTARÁ DISPONÍVEL PARA UM NOVO ALUGUEL");
+        log.info("\n\nCARRO QUE ESTAVA ALUGADO AGORA ESTARÁ DISPONÍVEL PARA UM NOVO ALUGUEL\n\n");
 
         return CarAvailable.builder().build();
     }
