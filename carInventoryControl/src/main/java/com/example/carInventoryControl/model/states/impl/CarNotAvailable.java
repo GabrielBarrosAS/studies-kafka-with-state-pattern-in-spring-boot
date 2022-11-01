@@ -1,8 +1,6 @@
 package com.example.carInventoryControl.model.states.impl;
 
-import com.example.carInventoryControl.exceptions.BadRequestException;
 import com.example.carInventoryControl.model.states.AbstractState;
-
 import lombok.Builder;
 import lombok.extern.log4j.Log4j2;
 
